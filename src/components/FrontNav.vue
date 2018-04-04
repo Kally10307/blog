@@ -1,6 +1,6 @@
 <template>
   <div class="nav">
-    <div class="wp">
+    <div class="wp960">
       <div class="item" :class="navIndex === index ? 'on' : ''" v-for="(item, index) in navList" :key="item.id">{{item.title}}</div>
     </div>
   </div>

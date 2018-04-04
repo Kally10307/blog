@@ -11,7 +11,5 @@ export default {
 </script>
 
 <style>
-  .main{
-    color: #d4237a;
-  }
+
 </style>

@@ -3,16 +3,18 @@
 @sub-color: #60606d;
 
 @base-bgColor: #ffffff;
-@default-bgColor: #fcfcfc;
+// @default-bgColor: #ebf0f0;
+@default-bgColor: #edf1f1;
 @main-bgColor: #090723;
 // @sub-bgColor: rgba(255,255,255,.5);
+@border-color: #f2f2f2;
 
 @big-fs: 16px;
 @main-fs: 14px;
 @sub-fs: 12px;
 
 .wp(@width: 1000px) {
-  width: 1000px;
+  width: @width;
   margin: 0 auto;
 }
 .flex(@align: flex-start, @justify: flex-start) {
@@ -50,7 +52,7 @@
   -moz-border-radius: @num;
   border-radius: @num;
 }
-.box-shadow(@h: 0px, @v: 1px, @blur: 6px, @spread: 0px, @color: rgba(212, 35, 122, .2)) {
+.box-shadow(@h: 0px, @v: 1px, @blur: 6px, @spread: 0px, @color: @base-color) {
   -webkit-box-shadow:@h @v @blur @spread  @color;
   -moz-box-shadow: @h @v @blur @spread  @color;
   box-shadow: @h @v @blur @spread  @color;
@@ -77,6 +79,21 @@
   .mt();
 }
 
+.ico-comm{
+  width: 30px;
+  height: 30px;
+  background: url('../img/ico_comment.png') 50% 50% no-repeat;
+  background-size: 20px 20px;
+  cursor: pointer;
+}
+.ico-share{
+  width: 30px;
+  height: 30px;
+  background: url('../img/ico_share.png') 50% 50% no-repeat;
+  background-size: 20px 20px;
+  cursor: pointer;
+}
+
 body {
   color: @main-color;
   font-size: @main-fs;
@@ -86,20 +103,34 @@ body {
 .wp {
   .wp();
 }
+.wp960{
+  .wp(960px);
+}
 
 #app {
   .header {
-    .flex(center);
     width: 100%;
+    min-width: 1000px;
     height: 60px;
     background-color: @main-bgColor;
     color: @base-bgColor;
     font-size: @big-fs;
     .pl();
     .pr();
+    .pt(6px);
     .box-sizing;
     .hd{
       .pr();
+    }
+    .wp960{
+      .flex(center);
+    }
+    .bd{
+      line-height: 20px;
+      .desc{
+        color: @base-color;
+        font-size: @main-fs;
+      }
     }
     .btn{
       font-size: @main-fs;
@@ -112,15 +143,17 @@ body {
   }
   .nav {
     width: 100%;
+    min-width: 1000px;
     line-height: 30px;
     background-color: @main-bgColor;
     color: @base-color;
     font-size: @main-fs;
     .pt(5px);
     .pb(5px);
-    .clearfix;
+    .wp960{
+      .clearfix;
+    }
     .item{
-      .pl();
       .pr();
       .mr();
       .fl;
@@ -130,6 +163,82 @@ body {
       }
       &.on{
         color: @base-bgColor;
+      }
+    }
+  }
+  .container{
+    .wp();
+    .mt20;
+  }
+  .main{
+    width: 680px;
+    background-color: @base-bgColor;
+    .box-shadow(0, 6, 13, 0, @base-color);
+    .list{
+      padding-top: 10px;
+      padding-bottom: 10px;
+      .item{
+        padding: 10px 20px;
+        border-bottom: 1px solid @border-color;
+        &:last-of-type{
+          border-bottom: 0;
+        }
+        .title{
+          font-size: @big-fs;
+          font-weight: bold;
+          line-height: 32px;
+          height: 32px;
+          max-width: 520px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          cursor: pointer;
+          &:hover{
+            color: @sub-color;
+          }
+        }
+        .date{
+          color: @sub-color;
+          line-height: 32px;
+        }
+        .info{
+          .flex(center);
+          padding-top: 10px;
+          color: @sub-color;
+          .num{
+            min-width: 30px;
+            margin: 0 10px 0 6px;
+          }
+        }
+      }
+    }
+  }
+  .side-nav{
+    width: 260px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: @base-bgColor;
+    .box-shadow(0, 6, 13, 0, @base-color);
+    .hd{
+      padding: 0 20px 10px;
+      border-bottom: 1px solid @border-color;
+      font-size: @big-fs;
+      line-height: 32px;
+      cursor: pointer;
+    }
+    .bd{
+      padding: 10px 0;
+      .list{
+        .item{
+          padding: 10px 20px;
+          line-height: 20px;
+          cursor: pointer;
+          color: @sub-color;
+          &:hover{
+            color: @main-color;
+            background-color: @border-color;
+          }
+        }
       }
     }
   }
