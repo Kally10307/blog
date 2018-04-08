@@ -6,7 +6,7 @@
         <div class="title">Kally's Blog</div>
         <div class="desc">less is more</div>
       </div>
-      <div class="ft btn">登录</div>
+      <div class="ft btn" @click="goLogin">登录</div>
     </div>
   </div>
 </template>
@@ -17,6 +17,12 @@ export default {
   data () {
     return {
 
+    }
+  },
+  methods: {
+    goLogin () {
+      let self = this
+      self.$router.push({ path: 'login' })
     }
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="nav">
     <div class="wp960">
-      <div class="item" :class="navIndex === index ? 'on' : ''" v-for="(item, index) in navList" :key="item.id">{{item.title}}</div>
+      <router-link tag="div" :to="{path: item.path}" class="item" :class="item.path === router ? 'on' : ''" v-for="item in navList" :key="item.id">{{item.title}}</router-link>
     </div>
   </div>
 </template>
@@ -13,15 +13,19 @@ export default {
     navList: {
       type: Array,
       default: []
-    },
-    navIndex: {
-      type: Number,
-      default: 0
     }
   },
   data () {
     return {
-
+      router: '/'
+    }
+  },
+  created () {
+    this.router = this.$route.path
+  },
+  watch: {
+    '$route' (val) {
+      this.router = val.path
     }
   }
 }

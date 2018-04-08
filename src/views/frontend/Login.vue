@@ -1,6 +1,6 @@
 <template>
-  <div class="wp">
-    login
+  <div class="container">
+    <div class="login"></div>
   </div>
 </template>
 
